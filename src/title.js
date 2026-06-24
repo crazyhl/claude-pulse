@@ -18,7 +18,7 @@ const STATE_EMOJI = {
   [STATES.AWAITING_CONFIRMATION]: '\ud83d\udfe1',
   [STATES.WORKING]:               '\ud83d\udfe2',  // 🟢
   [STATES.AWAITING_INPUT]:        '\ud83d\udfe2',
-  [STATES.COMPLETED]:             '\ud83d\udd35',  // 🔵
+  [STATES.COMPLETED]:             '\ud83d\udfe3',  // 🟣
   [STATES.ERROR]:                 '\ud83d\udd34',  // 🔴
 };
 

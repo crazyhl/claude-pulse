@@ -13,7 +13,7 @@ const STATES = Object.freeze({
   AWAITING_CONFIRMATION:  'awaiting-confirmation',    // 黄 闪烁
   WORKING:                'working',                  // 绿 闪烁
   AWAITING_INPUT:         'awaiting-input',           // 绿
-  COMPLETED:              'completed',                // 蓝
+  COMPLETED:              'completed',                // 紫
   ERROR:                  'error',                    // 红 闪烁
 });
 
@@ -127,7 +127,13 @@ function deriveClaudeSessionState(sessionInfo, hookEntry) {
   // 0) sessions/<pid>.json 的 status 字段 —— Claude 自己报告的, 优先
   if (sessionInfo && sessionInfo.status) {
     const mapped = mapSessionStatus(sessionInfo.status);
-    if (mapped) return mapped;
+    if (mapped) {
+      if (mapped === STATES.AWAITING_INPUT && sessionInfo.statusUpdatedAt) {
+        const age = Date.now() - sessionInfo.statusUpdatedAt;
+        if (age > T.STALE) return STATES.COMPLETED;
+      }
+      return mapped;
+    }
   }
 
   // 1) hook fallback —— 只在 sessions.status 完全不可用时 (例如进程刚启动还没写 sessions)

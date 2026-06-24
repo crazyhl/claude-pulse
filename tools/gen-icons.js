@@ -50,7 +50,7 @@ const STATES = [
   { name: 'yellowDim',color: [230, 184,   0], filled: false }, // confirm-off (flashing)
   { name: 'green',    color: [ 46, 168,  80], filled: true  }, // awaiting-input / working-on
   { name: 'greenDim', color: [ 46, 168,  80], filled: false }, // working-off (flashing)
-  { name: 'blue',     color: [ 46, 134, 193], filled: true  }, // completed
+  { name: 'blue',     color: [170,  85, 255], filled: true  }, // completed
   { name: 'red',      color: [231,  76,  60], filled: true  }, // error-on
   { name: 'redDim',   color: [231,  76,  60], filled: false }, // error-off (flashing)
 ];

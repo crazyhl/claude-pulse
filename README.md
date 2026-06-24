@@ -15,7 +15,7 @@ A cross-platform system tray status indicator for Claude Code, Trae, and opencod
 | `awaiting-confirmation` | 黄 | **闪烁** | Claude 发出 `Bash/Edit/Write` 等需确认的工具,正等用户批准 |
 | `working` | 绿 | **闪烁** | Claude 正在思考 / 执行工具 / 处理工具结果 |
 | `awaiting-input` | 绿 | 常亮 | 上一轮结束(3-30s 无活动),等用户输入 |
-| `completed` | 蓝 | 常亮 | 长时间空闲(> 5min) |
+| `completed` | 紫 | 常亮 | 长时间空闲(> 5min) |
 | `error` | 红 | **闪烁** | `tool_result.is_error == true` / 顶层 result 报错 |
 
 **判断"是否在执行指令"的标准: `working` 或 `awaiting-confirmation` 即视为"任务在跑"。**
@@ -54,7 +54,7 @@ A cross-platform system tray status indicator for Claude Code, Trae, and opencod
 ## 目录结构
 
 ```
-claude-status-tips/
+claudepulse/
 ├── package.json
 ├── src/
 │   ├── main.js            # Electron 主进程: 托盘 + 闪烁定时器 + 轮播调度

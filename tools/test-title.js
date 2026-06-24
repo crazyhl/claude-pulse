@@ -215,6 +215,13 @@ test('进程在 + sessions.status="idle" (即使 activity 是 thinking) → awai
   assert.strictEqual(deriveClaudeState(procs, activity, sessions), STATES.AWAITING_INPUT);
 });
 
+test('进程在 + sessions.status="idle" 且长时间无状态更新 → completed', () => {
+  const procs = { claude: true };
+  const sessions = sessionsObj(liveSession({ status: 'idle', age: T.STALE + 1000 }));
+  const activity = { lastEntry: { kind: 'thinking', summary: '💭' }, ageMs: 1000 };
+  assert.strictEqual(deriveClaudeState(procs, activity, sessions), STATES.COMPLETED);
+});
+
 test('进程在 + sessions.status="error" (即使 activity 是普通文本) → error', () => {
   const procs = { claude: true };
   const sessions = sessionsObj(liveSession({ status: 'error', age: 1000 }));
