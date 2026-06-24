@@ -1,0 +1,29 @@
+{
+  "name": "claudepulse",
+  "version": "0.1.0",
+  "description": "A cross-platform system tray status indicator for Claude Code, Trae, and opencode with real-time multi-session monitoring.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "gen-icons": "node tools/gen-icons.js",
+    "postinstall": "node tools/gen-icons.js",
+    "dev": "npm run gen-icons && electron .",
+    "test": "node tools/test-title.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "menubar",
+    "tray",
+    "status-bar"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^32.2.0",
+    "pngjs": "^7.0.0"
+  },
+  "dependencies": {
+    "ps-list": "^8.1.1"
+  }
+}
